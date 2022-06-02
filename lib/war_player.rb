@@ -15,10 +15,6 @@ class WarPlayer
 	end
 
 	def has_cards?
-		if hand_count > 0 
-			true
-		else
-			false
-		end
+	 hand_count > 0 ? true : false
 	end
 end 

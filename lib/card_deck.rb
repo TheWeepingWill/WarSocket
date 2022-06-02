@@ -1,4 +1,5 @@
 require_relative '../lib/playing_card'
+require 'pry'
 class CardDeck
 
   def initialize(cards = create_deck)
@@ -6,17 +7,18 @@ class CardDeck
 
  end
 
-
- def cards_left
-  @deck.count 
-end
-
-def deck 
+ def deck 
   @deck
 end
 
+def cards_left
+  deck.count 
+end
+
+
+
 def deal
- @deck.shift
+ deck.shift
 end
 
 # private 
@@ -33,9 +35,12 @@ end
 
 
 def shuffle 
-  deck.shuffle
+ deck.shuffle
 end
+
 end
+
+# deck = CardDeck.new()
 
 
 

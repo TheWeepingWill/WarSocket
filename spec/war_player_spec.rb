@@ -9,12 +9,20 @@ describe 'WarPlayer' do
 
 
 	it "determines if a player has cards" do 
-
 		deck = CardDeck.new.deck
-		deck2 = CardDeck.new([]).deck
 		war_player = WarPlayer.new(deck)
+
 		expect(war_player.hand_count).to eq 52  
 		expect(war_player.hand_count).to eq(deck.count)
 		expect(war_player.has_cards?).to eq true
+	end
+
+	it "determines if a player does not have cards" do 
+		deck = CardDeck.new([]).deck
+		war_player = WarPlayer.new(deck)
+
+		expect(war_player.hand_count).to eq 0 
+		expect(war_player.hand_count).to eq(deck.count)
+		expect(war_player.has_cards?).to eq false
 	end
 end
