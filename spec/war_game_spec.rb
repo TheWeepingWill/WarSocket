@@ -11,9 +11,11 @@ describe 'WarGame' do
 		expect(game.player1).to be_a_kind_of(WarPlayer)
 		expect(game.player2).to be_a_kind_of(WarPlayer)
 	end
-	# it "starts the game" do 
-	# 	deck = CardDeck.new.deck
- #        game = WarGame.new
- #        expect(game.start).to 
-	# end
+
+	describe "start" do 
+		it "starts the game" do 
+			game = WarGame.new
+			expect(game.start).to receive(:play_round)
+		end
+	end
 end

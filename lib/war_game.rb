@@ -1,11 +1,14 @@
  require_relative 'card_deck'
 
  class WarGame 
- 	DECK = CardDeck.new.shuffle
+
+ 	def start
+ 	end
 
  	def player1 
  		WarPlayer.new(DECK)
  	end
+
  	def player2 
  		WarPlayer.new(DECK)
  	end
