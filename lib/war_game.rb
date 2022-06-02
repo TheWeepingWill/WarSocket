@@ -1,10 +1,11 @@
  require_relative 'card_deck'
 
  class WarGame 
-    attr_reader :deck
+    attr_reader :deck 
 
- 	def initialize
+ 	def initialize(players = players(2))
  		@deck = CardDeck.new.shuffle
+ 		@players = players
  	end
 
  	def start
@@ -16,22 +17,14 @@
  	# def play_round
  	# end
     
-    def deal_hands
-    	until deck.count_cards == 0 
-    		player1(deck.deal)
-    		player2(deck.deal)
-    	end
+    # def deal_hands
+    # 	until deck.count_cards == 0 
+   
+    # 	end
+    # end
+    def players(number)
+    	number.times { Player.new() } 
     end
-
-
- 	def player1(hand) 
- 		WarPlayer.new(hand)
- 	end
-
- 	def player2(hand) 
- 		WarPlayer.new(hand)
- 	end
-
 
  end
 

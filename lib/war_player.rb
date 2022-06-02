@@ -1,20 +1,25 @@
 class WarPlayer
-    attr_reader :playing_hand
+    attr_accessor :cards, :name
 
-    def initialize(playing_hand)
-    	@playing_hand = playing_hand
+    def initialize(cards = [])
+    	@cards = cards
+    	@name = ["Saitama", "Tenma", "Revy", "Alexander", "Saber", "Lucifer", "Ono", "Droth"].sample
     end
 
 	def play_card
-		playing_hand.shift
+		cards.shift
 	end
 
-	def playing_hand_count
-		playing_hand.count 
+	def take_cards(cards)
+       cards.push
+	end
+
+	def cards_count
+		cards.count 
 	end
 
 	def has_cards?
-	 playing_hand_count > 0 ? true : false
+	 cards_count > 0 ? true : false
 	end
 
 
