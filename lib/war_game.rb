@@ -17,36 +17,21 @@
  	# end
     
     def deal_hands
-    	hand1 = []
-        hand2 = []
-        hands = [hand1, hand2]
     	until deck.count_cards == 0 
-    		hand1.push(deck.deal)
-    		hand2.push(deck.deal)
+    		player1(deck.deal)
+    		player2(deck.deal)
     	end
     end
 
-    def hand1
-    	[]
-    end
-    
-    def hand2
-    	[]
-    end
+
+ 	def player1(hand) 
+ 		WarPlayer.new(hand)
+ 	end
+
+ 	def player2(hand) 
+ 		WarPlayer.new(hand)
+ 	end
 
 
-
-
-
- 	# def player1 
- 	# 	WarPlayer.new()
- 	# end
-
- 	# def player2 
- 	# 	WarPlayer.new()
- 	# end
  end
 
- game = WarGame.new
-
- puts game.deal_hands

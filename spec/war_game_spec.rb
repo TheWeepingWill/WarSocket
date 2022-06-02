@@ -16,12 +16,14 @@ describe 'WarGame' do
 	describe "deal_hands" do 
 		let (:game) { WarGame.new}
 
+
 		it "deals all cards" do 
 			expect { game.deal_hands }.to change { game.deck.count_cards }.from(52).to(0)
 		end
 
-		it "deals the cards to two arrays" do 
-			expect(game.hand1.count).to eq 26
+		it "deals the cards to two players" do
+            
+			expect(game.player1.count).to eq game.deck.count_cards/2
 		end
 
 	end

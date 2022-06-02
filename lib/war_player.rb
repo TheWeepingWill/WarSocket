@@ -1,15 +1,21 @@
 class WarPlayer
+    attr_reader :playing_hand
 
+    def initialize(playing_hand)
+    	@playing_hand = playing_hand
+    end
 
-	def play_card(hand)
-		hand.shift
+	def play_card
+		playing_hand.shift
 	end
 
-	def hand_count(hand)
-		hand.count 
+	def playing_hand_count
+		playing_hand.count 
 	end
 
-	# def has_cards?
-	#  hand_count > 0 ? true : false
-	# end
+	def has_cards?
+	 playing_hand_count > 0 ? true : false
+	end
+
+
 end 

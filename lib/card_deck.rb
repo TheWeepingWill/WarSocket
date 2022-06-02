@@ -14,15 +14,11 @@ class CardDeck
     deck.length 
   end
 
-
-
   def deal
    deck.shift
  end
 
-# private 
-
-def create_deck
+ def create_deck
   standard_deck = []
   PlayingCard::SUITS.each do |suit|
     PlayingCard::RANKS.each do |rank|
