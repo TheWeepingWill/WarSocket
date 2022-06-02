@@ -3,23 +3,22 @@ require 'pry'
 class CardDeck
 
   def initialize(cards = create_deck)
-   @deck = cards
+    @deck = cards
+  end
 
+  def deck 
+    @deck
+  end
+
+  def count_cards
+    deck.length 
+  end
+
+
+
+  def deal
+   deck.shift
  end
-
- def deck 
-  @deck
-end
-
-def cards_left
-  deck.count 
-end
-
-
-
-def deal
- deck.shift
-end
 
 # private 
 
@@ -35,12 +34,12 @@ end
 
 
 def shuffle 
- deck.shuffle
+ CardDeck.new(deck.shuffle)
 end
 
 end
 
-# deck = CardDeck.new()
+
 
 
 

@@ -8,15 +8,15 @@ end
 it "Counts the cards" do 
  deck1 = CardDeck.new([PlayingCard])
  deck2 = CardDeck.new([PlayingCard, PlayingCard])
- expect(deck1.cards_left).to eq 1
- expect(deck2.cards_left).to eq 2
+ expect(deck1.count_cards).to eq 1
+ expect(deck2.count_cards).to eq 2
 end
 
 describe "create deck" do 
 
   it 'Should have 52 cards when new deck is created' do
     deck = CardDeck.new()
-    expect(deck.cards_left).to eq 52
+    expect(deck.count_cards).to eq 52
   end
 
   it "first card should be an ace of hearts" do 
@@ -34,7 +34,7 @@ describe "deal" do
     card = deck.deal
 
     expect(card).to_not be_nil
-    expect(deck.cards_left).to eq 51
+    expect(deck.count_cards).to eq 51
     expect(card).to be_a_kind_of(PlayingCard) 
     expect(deck.deck.include?(card)).to eq(false)
   end
