@@ -21,7 +21,7 @@ describe 'WarPlayer' do
 		war_player1 = WarPlayer.new(empty_deck)
 
 		expect(war_player1.cards_count).to eq 0 
-		expect(war_player1.cards_count).to eq(deck.count)
+		expect(war_player1.cards_count).to eq(empty_deck.count)
 		expect(war_player1.has_cards?).to eq false
 	end
 
