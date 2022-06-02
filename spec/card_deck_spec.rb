@@ -21,7 +21,7 @@ describe "create deck" do
 
   it "first card should be an ace of hearts" do 
     deck = CardDeck.new()
-    expect(deck.create_deck.shift).to eq(PlayingCard.new("A", "H"))
+    expect(deck.create_deck.shift).to eq(PlayingCard.new("2", "H"))
   end
 
 end
@@ -44,7 +44,6 @@ describe "shuffle" do
   it "should be shuffled" do 
     deck1 = CardDeck.new
     expect(deck1.shuffle).not_to equal(deck1)
-
   end
 end
 

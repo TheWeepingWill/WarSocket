@@ -1,5 +1,5 @@
 class PlayingCard 
-	RANKS = %w( A 2 3 4 5 6 7 8 9 10 J Q K)
+	RANKS = %w( 2 3 4 5 6 7 8 9 10 J Q K A)
 	SUITS = %w( H S C D)
 
 
@@ -24,7 +24,7 @@ class PlayingCard
 	end
 
 	def ==(other)
-		self.rank == other.rank && self.suit == other.suit
+		rank == other.rank && suit == other.suit
 	end
 end
 
