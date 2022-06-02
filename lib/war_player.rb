@@ -10,8 +10,8 @@ class WarPlayer
 		cards.shift
 	end
 
-	def take_cards(cards)
-       cards.push
+	def take_cards(card)
+       cards.push(card)
 	end
 
 	def cards_count

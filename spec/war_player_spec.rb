@@ -1,5 +1,5 @@
 require_relative '../lib/war_player'
-
+require_relative '../lib/playing_card'
 describe 'WarPlayer' do
     let (:deck) { CardDeck.new.deck }
     let(:war_player) { WarPlayer.new(deck) }
@@ -34,6 +34,11 @@ describe 'WarPlayer' do
 		deckless_player = WarPlayer.new
 		expect(deckless_player.name).to be_a_kind_of(String)
 		expect(deckless_player.name.empty?).not_to eq true
+	end
+
+	it "can take a card" do 
+		card = PlayingCard.new("3", "H")
+		expect { war_player.take_cards(card) }.to change { war_player.cards_count }.from(52).to(53)
 	end
 
 end

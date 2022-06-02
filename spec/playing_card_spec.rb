@@ -8,7 +8,7 @@ describe 'PlayingCard' do
 		end
 	end
 
-		it "returns a valid rank" do 
+		it "returns a valid suit" do 
 		PlayingCard::SUITS.each do |suit|
 			card = PlayingCard.new(PlayingCard::RANKS.sample, suit)
 			expect(card.suit).to eq(suit)
