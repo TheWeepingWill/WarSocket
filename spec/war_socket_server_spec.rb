@@ -7,6 +7,7 @@ class MockWarSocketClient
 
   def initialize(port)
     @socket = TCPSocket.new('localhost', port)
+    sleep(0.1)
   end
 
   def provide_input(text)
@@ -48,12 +49,12 @@ describe WarSocketServer do
     @clients.push(client1)
     @server.accept_new_client("Player 1")
     @server.create_game_if_possible
-    expect(@server.games.count).to be 0
+    expect(@server.games.count).to eq 0
     client2 = MockWarSocketClient.new(@server.port_number)
     @clients.push(client2)
     @server.accept_new_client("Player 2")
     @server.create_game_if_possible
-    expect(@server.games.count).to be 1
+    expect(@server.games.count).to eq 1
   end
 
   # Add more tests to make sure the game is being played
