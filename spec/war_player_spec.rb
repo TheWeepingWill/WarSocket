@@ -1,8 +1,9 @@
 require_relative '../lib/war_player'
 require_relative '../lib/playing_card'
+require_relative '../lib/card_deck'
 describe 'WarPlayer' do
-    let (:deck) { CardDeck.new.deck }
-    let(:war_player) { WarPlayer.new(deck) }
+	let (:deck) { CardDeck.new.deck }
+	let(:war_player) { WarPlayer.new(deck) }
 
 
 
@@ -10,7 +11,7 @@ describe 'WarPlayer' do
 		expect(deck.first).to equal(war_player.play_card)
 	end
 
-    it "determines if a player has cards" do 
+	it "determines if a player has cards" do 
 		expect(war_player.cards_count).to eq 52  
 		expect(war_player.cards_count).to eq(deck.count)
 		expect(war_player.has_cards?).to eq true
@@ -36,9 +37,21 @@ describe 'WarPlayer' do
 		expect(deckless_player.name.empty?).not_to eq true
 	end
 
-	it "can take a card" do 
-		card = PlayingCard.new("3", "H")
-		expect { war_player.take_cards(card) }.to change { war_player.cards_count }.from(52).to(53)
+	describe '#take_cards' do 
+
+         new_war_player = WarPlayer.new
+
+		it "can take a card" do 
+			card = PlayingCard.new("3", "H")
+			expect { new_war_player.take_cards(card) }.to change { new_war_player.cards_count }.by 1
+		end
+
+		it "can take multiple cards" do 
+			cards = [PlayingCard.new("3", "H"), PlayingCard.new("4", "H")]
+			expect { new_war_player.take_cards(*cards) }.to change { new_war_player.cards_count }.by 2
+		end
+
+
 	end
 
 end

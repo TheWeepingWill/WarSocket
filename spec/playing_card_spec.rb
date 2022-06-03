@@ -21,5 +21,13 @@ describe 'PlayingCard' do
 
 	end
 
+	it "has a value" do
+		#given
+		card = PlayingCard.new("A", "H")
+		#Then
+		expect(card.value).to eq(12)
+
+	end
+
 
 end

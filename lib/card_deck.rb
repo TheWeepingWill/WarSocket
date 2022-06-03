@@ -30,7 +30,7 @@ end
 
 
 def shuffle 
- CardDeck.new(deck.shuffle)
+ deck.shuffle!
 end
 
 end

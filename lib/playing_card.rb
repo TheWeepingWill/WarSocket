@@ -1,6 +1,6 @@
 class PlayingCard 
 	RANKS = %w( 2 3 4 5 6 7 8 9 10 J Q K A)
-	SUITS = %w( H S C D)
+	SUITS = %w( Hearts Spades Clubs Diamonds)
 
 	attr_reader :rank, :suit
 
@@ -16,11 +16,15 @@ class PlayingCard
 
 	end
 
+	def value
+       RANKS.find_index(rank)
+	end
+
 	def ==(other)
 		rank == other.rank && suit == other.suit
 	end
 
-	
+
 end
 
 

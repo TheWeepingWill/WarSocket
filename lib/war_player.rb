@@ -1,17 +1,19 @@
+require 'pry'
 class WarPlayer
     attr_accessor :cards, :name
 
-    def initialize(cards = [])
+    def initialize(cards = [], name = ["Saitama", "Tenma", "Revy", "Alexander", "Saber", "Lucifer", "Ono", "Droth"].sample)
     	@cards = cards
-    	@name = ["Saitama", "Tenma", "Revy", "Alexander", "Saber", "Lucifer", "Ono", "Droth"].sample
+    	@name = name
     end
 
 	def play_card
 		cards.shift
 	end
 
-	def take_cards(card)
-       cards.push(card)
+	def take_cards(*new_cards) 
+		# binding.pry
+		cards.push(*new_cards)
 	end
 
 	def cards_count

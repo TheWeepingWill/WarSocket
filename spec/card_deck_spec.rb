@@ -19,9 +19,9 @@ describe "create deck" do
     expect(deck.count_cards).to eq 52
   end
 
-  it "first card should be an ace of hearts" do 
+  it "first card should be an two of hearts" do 
     deck = CardDeck.new()
-    expect(deck.create_deck.shift).to eq(PlayingCard.new("2", "H"))
+    expect(deck.create_deck.shift).to eq(PlayingCard.new("2", "Hearts"))
   end
 
 end
