@@ -47,8 +47,8 @@ describe 'WarGame' do
 
 		it 'it gives the cards to player 1 if player 1 wins' do 
            # Given 
-           player1 = WarPlayer.new([PlayingCard.new('A', 'S')])
-           player2 = WarPlayer.new([PlayingCard.new('3', 'S')])
+           player1 = WarPlayer.new([PlayingCard.new('A', 'Spades')])
+           player2 = WarPlayer.new([PlayingCard.new('3', 'Spades')])
            game = WarGame.new([player1, player2])
 
            # When 
@@ -61,8 +61,8 @@ describe 'WarGame' do
 
        it 'it gives the cards to player 2 if player 2 wins' do 
            # Given 
-           player1 = WarPlayer.new([PlayingCard.new('3', 'S')])
-           player2 = WarPlayer.new([PlayingCard.new('A', 'S')])
+           player1 = WarPlayer.new([PlayingCard.new('3', 'Spades')])
+           player2 = WarPlayer.new([PlayingCard.new('A', 'Spades')])
            game = WarGame.new([player1, player2])
 
            # When 
@@ -73,9 +73,9 @@ describe 'WarGame' do
            expect(player2.cards_count).to eq 2
        end
 
-       it "plays another round if it's a tie" do 
-       	player1 = WarPlayer.new([PlayingCard.new('A', 'H'), PlayingCard.new('K', 'H')])
-       	player2 = WarPlayer.new([PlayingCard.new('A', 'S'), PlayingCard.new('2', 'S')])
+       it "gives all the cards to the winning player in case of a tie" do 
+       	player1 = WarPlayer.new([PlayingCard.new('A', 'Hearts'), PlayingCard.new('K', 'Hearts')])
+       	player2 = WarPlayer.new([PlayingCard.new('A', 'Spades'), PlayingCard.new('2', 'S')])
        	game = WarGame.new([player1, player2])
 
            # When 
@@ -90,8 +90,8 @@ describe 'WarGame' do
 
    describe '#play_hand' do 
 
-   	player1 = WarPlayer.new([PlayingCard.new('A', 'H'), PlayingCard.new('K', 'H')])
-   	player2 = WarPlayer.new([PlayingCard.new('A', 'S'), PlayingCard.new('2', 'S')])
+   	player1 = WarPlayer.new([PlayingCard.new('A', 'Hearts'), PlayingCard.new('K', 'Hearts')])
+   	player2 = WarPlayer.new([PlayingCard.new('A', 'Spades'), PlayingCard.new('2', 'Spades')])
    	let (:game) {WarGame.new([player1, player2])}
 
 
@@ -103,14 +103,15 @@ describe 'WarGame' do
 
 
    	describe '#tie' do 
-   		player1 = WarPlayer.new([PlayingCard.new('A', 'H'))
-   		player2 = WarPlayer.new([PlayingCard.new('A', 'S'))
-        game = WarGame.new
+   		player1 = WarPlayer.new([PlayingCard.new('A', 'Hearts'),  PlayingCard.new('K', 'Hearts')])
+   		player2 = WarPlayer.new([PlayingCard.new('A', 'Spades'),  PlayingCard.new('2', 'Spades')])
+   		game = WarGame.new([player1, player2])
 
-        it "adds to holder" do 
-        	game.tie(player1.cards, player2.cards, [])
-        	expect(game.tie.holder).to eq([player1.cards, player2.cards])
-        end
+   		it "plays another hand" do 
+   			expect(game.tie(game.player1.cards.shift, game.player2.cards.shift, [])).to recieve(:play_hand)
+
+   			game.play_round
+   		end
 
 
    	end
@@ -121,14 +122,14 @@ describe 'WarGame' do
    	describe '#winner' do 
 
    		it "return false if both players have cards" do 
-   			player1 = WarPlayer.new([PlayingCard.new('3', 'S')])
-   			player2 = WarPlayer.new([PlayingCard.new('A', 'S')])
+   			player1 = WarPlayer.new([PlayingCard.new('3', 'Spades')])
+   			player2 = WarPlayer.new([PlayingCard.new('A', 'Spades')])
    			game = WarGame.new([player1, player2])
    			expect(game.winner).to eq(false)
    		end
 
    		it 'returns player1 if player2 has no cards' do 
-   			player1 = WarPlayer.new([PlayingCard.new('3', 'S')])
+   			player1 = WarPlayer.new([PlayingCard.new('3', 'Spades')])
    			player2 = WarPlayer.new
    			game = WarGame.new([player1, player2])
    			expect(game.winner).to eq(player1)
@@ -136,7 +137,7 @@ describe 'WarGame' do
    		end
    		it 'returns player2 if player1 has no cards' do 
    			player1 = WarPlayer.new
-   			player2 = WarPlayer.new([PlayingCard.new('A', 'S')])
+   			player2 = WarPlayer.new([PlayingCard.new('A', 'Spades')])
    			game = WarGame.new([player1, player2])
    			expect(game.winner).to eq(player2)
    		end

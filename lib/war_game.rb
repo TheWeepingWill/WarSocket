@@ -4,7 +4,8 @@
 
  class WarGame 
 
- 	attr_reader :deck, :players, :rounds
+ 	attr_reader :deck, :players
+ 	attr_accessor :rounds
 
  	def initialize(players = [WarPlayer.new, WarPlayer.new])
  		@players = players
@@ -48,7 +49,7 @@
    end
 
    def win(card1, card2, holder)
-   	@rounds += 1
+   	self.rounds += 1
    	mid_game_shuffle
 
    	if card1.value > card2.value 
