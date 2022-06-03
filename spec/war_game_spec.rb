@@ -102,6 +102,20 @@ describe 'WarGame' do
    	end
 
 
+   	describe '#tie' do 
+   		player1 = WarPlayer.new([PlayingCard.new('A', 'H'))
+   		player2 = WarPlayer.new([PlayingCard.new('A', 'S'))
+        game = WarGame.new
+
+        it "adds to holder" do 
+        	game.tie(player1.cards, player2.cards, [])
+        	expect(game.tie.holder).to eq([player1.cards, player2.cards])
+        end
+
+
+   	end
+
+
 
 
    	describe '#winner' do 
